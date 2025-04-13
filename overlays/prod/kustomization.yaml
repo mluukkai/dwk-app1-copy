@@ -5,3 +5,7 @@ patches:
 
 namePrefix: prod-
 namespace: poc-prod
+
+images:
+- name: PROJECT/IMAGE
+  newName: mluukkai/dwk1
