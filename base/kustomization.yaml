@@ -7,4 +7,4 @@ resources:
 
 images:
 - name: PROJECT/IMAGE
-  newName: mluukkai/dwk1:1
+  newName: mluukkai/dwk1
