@@ -1,0 +1,9 @@
+resources:
+- ./../../base
+
+namePrefix: staging-
+namespace: poc-staging
+
+images:
+  - name: PROJECT/IMAGE
+    newName: nginx:1.25-bookworm
