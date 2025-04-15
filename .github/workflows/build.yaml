@@ -20,6 +20,12 @@ jobs:
         if: github.ref_type != 'tag'
         run: echo "NOT TAG"
 
+      - name: Set working directory
+        id: set-dir
+        run: echo "dir=${{ github.ref_type == 'tag' && 'overlays/prod/' || 'overlays/staging/' }}" >> $GITHUB_ENV
+
       - name: ls
-        working-directory: ${{ github.ref_type == 'tag' ? overlays/prod/ : overlays/staging/ }}
-        run: ls
+        run: |
+          ls -a
+          pwd
+        working-directory: ${{ env.dir }}
