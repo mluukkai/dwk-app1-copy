@@ -4,31 +4,22 @@ on:
   push:
 
 jobs:
-  build-publish:
-    name: Build, Publish
+  test:
+    name: test shit
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: TAG
-        if: github.ref_type == 'tag'
-        run: echo "TAG"
-
-      - name: NOT TAG
-        if: github.ref_type != 'tag'
-        run: echo "NOT TAG"
-
-      - name: Set working directory
-        id: set-dir
-        run: echo "DIR=${{ github.ref_type == 'tag' && 'overlays/prod/' || 'overlays/staging/' }}" >> $GITHUB_ENV
-
-      - name: ls
-        working-directory: ${{ env.DIR }}
+        with:
+          repository: mluukkai/k25_project_conf
+          ref: 'main'
+          token:  ${{ secrets.REPO_TOKEN }}
+      - name: setup git config
         run: |
-          ls -a
-          pwd
-
-      - name: dibag 
-        run: '${{ env.DIR }}/kustomization.yaml'
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: debug
+        run: ls -la
+      #- <make changes and commit >
+      #- run: git push origin master
