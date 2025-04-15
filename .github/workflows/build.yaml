@@ -22,10 +22,13 @@ jobs:
 
       - name: Set working directory
         id: set-dir
-        run: echo "dir=${{ github.ref_type == 'tag' && 'overlays/prod/' || 'overlays/staging/' }}" >> $GITHUB_ENV
+        run: echo "DIR=${{ github.ref_type == 'tag' && 'overlays/prod/' || 'overlays/staging/' }}" >> $GITHUB_ENV
 
       - name: ls
+        working-directory: ${{ env.DIR }}
         run: |
           ls -a
           pwd
-        working-directory: ${{ env.dir }}
+
+      - name: dibag 
+        run: '${{ env.DIR }}/kustomization.yaml'
