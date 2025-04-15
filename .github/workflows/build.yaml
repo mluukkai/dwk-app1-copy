@@ -21,5 +21,6 @@ jobs:
           git config user.email "<>"
       - name: debug
         run: ls -la
-      #- <make changes and commit >
-      #- run: git push origin master
+      - name: add shit
+        run: touch test.txt
+      - run: git push origin main
