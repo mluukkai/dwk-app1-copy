@@ -19,3 +19,7 @@ jobs:
       - name: NOT TAG
         if: github.ref_type != 'tag'
         run: echo "NOT TAG"
+
+      - name: ls
+        working-directory: ${{ github.ref_type == 'tag' ? overlays/prod/ : overlays/staging/ }}
+        run: ls
