@@ -23,4 +23,7 @@ jobs:
         run: ls -la
       - name: add shit
         run: touch test.txt
+      - run: git add test.txt
+      - run: git commit -m "add test.txt"
+      - run: git status
       - run: git push origin main
